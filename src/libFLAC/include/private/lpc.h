@@ -105,6 +105,9 @@ void FLAC__lpc_compute_autocorrelation_intrin_power8_vsx_lag_12(const FLAC__real
 void FLAC__lpc_compute_autocorrelation_intrin_power8_vsx_lag_16(const FLAC__real data[], uint32_t data_len, uint32_t lag, FLAC__real autoc[]);
 #endif
 #endif
+#ifdef FLAC__CPU_AARCH64
+void FLAC__lpc_compute_autocorrelation_intrin_neon(const FLAC__real data[], uint32_t data_len, uint32_t lag, FLAC__real autoc[]);
+#endif
 #endif
 
 /*

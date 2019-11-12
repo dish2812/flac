@@ -915,6 +915,9 @@ static FLAC__StreamEncoderInitStatus init_stream_internal_(
 	}
 #endif
 #endif
+#if defined FLAC__CPU_AARCH64
+	encoder->private_->local_lpc_compute_autocorrelation = FLAC__lpc_compute_autocorrelation_intrin_neon;
+#endif
 	if(encoder->private_->cpuinfo.use_asm) {
 #  ifdef FLAC__CPU_IA32
 		FLAC__ASSERT(encoder->private_->cpuinfo.type == FLAC__CPUINFO_TYPE_IA32);
