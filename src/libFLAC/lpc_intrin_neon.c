@@ -9,7 +9,7 @@
 
 void FLAC__lpc_compute_autocorrelation_intrin_neon(const FLAC__real data[], uint32_t data_len, uint32_t lag, FLAC__real autoc[])
 {
-    printf("INSIDE INTRIN NEON")
+    printf("INSIDE INTRIN NEON");
     /*
      * TEST WITH C CODE TO SEE IF DEFINES WORK
 	 */
