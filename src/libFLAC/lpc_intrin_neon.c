@@ -7,7 +7,6 @@
 #include "FLAC/assert.h"
 #include "FLAC/format.h"
 #include <arm_neon.h>
-#include <stdio.h>
 
 inline float32x4_t shufffleVector(float32x4_t vec)
 {
@@ -28,7 +27,6 @@ inline float32x4_t shufffleVector_2103(float32x4_t vec)
 
 void FLAC__lpc_compute_autocorrelation_intrin_neon(const FLAC__real data[], uint32_t data_len, uint32_t lag, FLAC__real autoc[])
 {
-    printf("INSIDE INTRIN NEON");
     /*
      * TEST WITH C CODE TO SEE IF DEFINES WORK
 	 */
@@ -59,7 +57,6 @@ void FLAC__lpc_compute_autocorrelation_intrin_neon(const FLAC__real data[], uint
 
 void FLAC__lpc_compute_autocorrelation_intrin_neon_lag_4(const FLAC__real data[], uint32_t data_len, uint32_t lag, FLAC__real autoc[])
 {
-    printf("INSIDE INTRIN NEON LAG 4");
     int i;
     int limit = data_len - 4;
     float32x4_t sum0 = vdupq_n_f32(0.0f);
@@ -98,7 +95,6 @@ void FLAC__lpc_compute_autocorrelation_intrin_neon_lag_4(const FLAC__real data[]
 
 void FLAC__lpc_compute_autocorrelation_intrin_neon_lag_8(const FLAC__real data[], uint32_t data_len, uint32_t lag, FLAC__real autoc[])
 {
-    printf("INSIDE INTRIN NEON LAG 8");
     int i;
     int limit = data_len - 8;
     float32x4_t sum0 = vdupq_n_f32(0.0f);
@@ -146,7 +142,6 @@ void FLAC__lpc_compute_autocorrelation_intrin_neon_lag_8(const FLAC__real data[]
 
 void FLAC__lpc_compute_autocorrelation_intrin_neon_lag_12(const FLAC__real data[], uint32_t data_len, uint32_t lag, FLAC__real autoc[])
 {
-    printf("INSIDE INTRIN NEON LAG 12");
     int i;
     int limit = data_len - 12;
     float32x4_t sum0 = vdupq_n_f32(0.0f);
@@ -202,7 +197,6 @@ void FLAC__lpc_compute_autocorrelation_intrin_neon_lag_12(const FLAC__real data[
 
 void FLAC__lpc_compute_autocorrelation_intrin_neon_lag_16(const FLAC__real data[], uint32_t data_len, uint32_t lag, FLAC__real autoc[])
 {
-    printf("INSIDE INTRIN NEON LAG 16");
     int i;
     int limit = data_len - 16;
     float32x4_t sum0 = vdupq_n_f32(0.0f);
