@@ -19,9 +19,10 @@ inline float32x4_t shufffleVector(float32x4_t vec)
 
 inline float32x4_t shufffleVector_2103(float32x4_t vec)
 {
-    float32_t *temp = vgetq_lane_f32(vec, 0);
+    float32_t temp = vgetq_lane_f32(vec, 0);
     vec = vcopyq_laneq_f32(vec, 0, vec, 2);
-    vst1q_lane_f32(temp, vec, 2);
+    float32_t *tempPtr = &temp;
+    vst1q_lane_f32(tempPtr, vec, 2);
     return vec;
 }
 
