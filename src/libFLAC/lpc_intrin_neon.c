@@ -25,36 +25,6 @@ inline float32x4_t shufffleVector_2103(float32x4_t vec)
     return vec;
 }
 
-void FLAC__lpc_compute_autocorrelation_intrin_neon(const FLAC__real data[], uint32_t data_len, uint32_t lag, FLAC__real autoc[])
-{
-    /*
-     * TEST WITH C CODE TO SEE IF DEFINES WORK
-	 */
-    FLAC__real d;
-    uint32_t sample, coeff;
-    const uint32_t limit = data_len - lag;
-
-    FLAC__ASSERT(lag > 0);
-    FLAC__ASSERT(lag <= data_len);
-
-    for (coeff = 0; coeff < lag; coeff++)
-        autoc[coeff] = 0.0;
-
-    for (sample = 0; sample <= limit; sample++)
-    {
-        d = data[sample];
-        for (coeff = 0; coeff < lag; coeff++)
-            autoc[coeff] += d * data[sample + coeff];
-    }
-
-    for (; sample < data_len; sample++)
-    {
-        d = data[sample];
-        for (coeff = 0; coeff < data_len - sample; coeff++)
-            autoc[coeff] += d * data[sample + coeff];
-    }
-}
-
 void FLAC__lpc_compute_autocorrelation_intrin_neon_lag_4(const FLAC__real data[], uint32_t data_len, uint32_t lag, FLAC__real autoc[])
 {
     int i;
