@@ -4,8 +4,7 @@ arch:
   - amd64
   - arm64
 
-os:
-  - linux
+os: linux
   addons:
         apt:
           sources:
@@ -14,7 +13,7 @@ os:
             - g++-7
       env:
         - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
-  - osx
+os: osx
 
 dist: xenial
 
