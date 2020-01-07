@@ -3,7 +3,7 @@ language: c
 arch:
   - amd64
   - arm64
-  
+
 matrix:
   - os: linux
     addons:
@@ -12,6 +12,7 @@ matrix:
               - ubuntu-toolchain-r-test
             packages:
               - g++-7
+              - gcc-7
     env:
       - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
   - os: osx
