@@ -29,7 +29,6 @@ env:
   - BUILD_SYSTEM="cmake"     CONFIGURE_OPTS=
   - BUILD_SYSTEM="cmake"     CONFIGURE_OPTS=-DENABLE_64_BIT_WORDS=ON
 
-
 before_install:
     - eval "${MATRIX_EVAL}"
     
