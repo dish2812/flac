@@ -23,7 +23,7 @@ env:
 
 
 before_script:
-  - ./UPDATE_CMAKE_CPU_ARM.sh
+  - bash UPDATE_CMAKE_CPU_ARM.sh
 
 
 install:
