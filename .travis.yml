@@ -43,7 +43,7 @@ before_script:
       tar -xvf cmake-3.17.0-1-aarch64.pkg.tar.xz;
       tar -xvf libnsl-1.2.0-2-aarch64.pkg.tar.xz;
       tar -xvf libtirpc-1.2.5-1-aarch64.pkg.tar.xz;
-      export LD_LIBRARY_PATH=/home/ubuntu/deps/usr/lib:$LD_LIBRARY_PATH;
+      LD_LIBRARY_PATH=/home/ubuntu/deps/usr/lib:$LD_LIBRARY_PATH;
       PATH=${CMAKE_DIR}/usr:${CMAKE_DIR}/usr/bin:$PATH;
       cd ${TRAVIS_BUILD_DIR};
     fi
