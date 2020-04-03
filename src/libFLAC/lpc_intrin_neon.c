@@ -2,7 +2,7 @@
 
 #ifndef FLAC__INTEGER_ONLY_LIBRARY
 #ifndef FLAC__NO_ASM
-#if defined FLAC__CPU_AARCH64 && FLAC__HAS_NEONINTRIN
+#if defined FLAC__CPU_ARM && FLAC__HAS_NEONINTRIN
 #include "private/lpc.h"
 #include "FLAC/assert.h"
 #include "FLAC/format.h"
@@ -256,6 +256,6 @@ void FLAC__lpc_compute_autocorrelation_intrin_neon_lag_16(const FLAC__real data[
     vst1q_f32(autoc + 8, sum2);
     vst1q_f32(autoc + 12, sum3);
 }
-#endif /* FLAC__CPU_AARCH64 && FLAC__HAS_ARCH64INTRIN */
+#endif /* FLAC__CPU_ARM && FLAC__HAS_ARCH64INTRIN */
 #endif /* FLAC__NO_ASM */
 #endif /* FLAC__INTEGER_ONLY_LIBRARY */
