@@ -18,6 +18,10 @@ wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/libnghtt
 wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/libidn2-2.3.0-1-aarch64.pkg.tar.xz;
 wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/libssh2-1.9.0-2-aarch64.pkg.tar.xz;
 wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/libpsl-0.21.0-2-aarch64.pkg.tar.xz;
+wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/libunistring-0.9.10-2-aarch64.pkg.tar.xz;
+wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/krb5-1.18-1-aarch64.pkg.tar.xz;
+wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/libpsl-0.21.0-2-aarch64.pkg.tar.xz;
+wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/zlib-1:1.2.11-4-aarch64.pkg.tar.xz;
 tar -xvf libpsl-0.21.0-2-aarch64.pkg.tar.xz;
 tar -xvf libarchive-3.4.2-1-aarch64.pkg.tar.xz;
 tar -xvf libuv-1.35.0-1-aarch64.pkg.tar.xz;
@@ -33,8 +37,11 @@ tar -xvf curl-7.69.1-1-aarch64.pkg.tar.xz;
 tar -xvf libnghttp2-1.40.0-1-aarch64.pkg.tar.xz;
 tar -xvf libidn2-2.3.0-1-aarch64.pkg.tar.xz;
 tar -xvf libssh2-1.9.0-2-aarch64.pkg.tar.xz;
+tar -xvf libunistring-0.9.10-2-aarch64.pkg.tar.xz;
 tar -xvf cmake-3.17.0-1-aarch64.pkg.tar.xz;
-
+tar -xvf krb5-1.18-1-aarch64.pkg.tar.xz;
+tar -xvf libpsl-0.21.0-2-aarch64.pkg.tar.xz;
+tar -xvf zlib-1:1.2.11-4-aarch64.pkg.tar.xz;
 export LD_LIBRARY_PATH=${CMAKE_DIR}/usr/lib:$LD_LIBRARY_PATH;
 export PATH=${CMAKE_DIR}/usr:${CMAKE_DIR}/usr/bin:$PATH;
 cd ${TRAVIS_BUILD_DIR};
