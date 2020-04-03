@@ -27,7 +27,7 @@ before_script:
 
 
 install:
-  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get -y install cmake gettext libtool-bin libogg-dev doxygen libxml2-utils w3c-sgml-lib; fi
+  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get -y install libcurl4-openssl-dev gettext libtool-bin libogg-dev doxygen libxml2-utils w3c-sgml-lib; fi
   - if [ $TRAVIS_OS_NAME = osx ]; then brew update ; brew install libogg; fi
 
 script:
