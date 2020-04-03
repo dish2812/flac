@@ -48,8 +48,8 @@ before_install:
       PATH=${CMAKE_DIR}/usr:${CMAKE_DIR}/usr/bin:$PATH;
       cd ${TRAVIS_BUILD_DIR};
     fi
-  - LD_LIBRARY_PATH=/home/ubuntu/deps/usr/lib:$LD_LIBRARY_PATH
-  - PATH=${CMAKE_DIR}/usr:${CMAKE_DIR}/usr/bin:$PATH
+  - export LD_LIBRARY_PATH=/home/ubuntu/deps/usr/lib:$LD_LIBRARY_PATH
+  - export PATH=${CMAKE_DIR}/usr:${CMAKE_DIR}/usr/bin:$PATH
 
 install:
   - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get -y install gettext libtool-bin libogg-dev doxygen libxml2-utils w3c-sgml-lib; fi
