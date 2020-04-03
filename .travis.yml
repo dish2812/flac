@@ -21,10 +21,11 @@ env:
   - BUILD_SYSTEM="cmake"     CONFIGURE_OPTS=
   - BUILD_SYSTEM="cmake"     CONFIGURE_OPTS=-DENABLE_64_BIT_WORDS=ON
 
-before_script:
+before_install:
+  - CMAKE_DIR="${TRAVIS_BUILD_DIR}/deps"
+  - mkdir ${CMAKE_DIR}
+  - cd ${CMAKE_DIR}
   - if [[ "${TRAVIS_CPU_ARCH}" == "arm64" ]]; then
-      CMAKE_DIR="${TRAVIS_BUILD_DIR}/deps";
-      mkdir ${CMAKE_DIR} && cd ${CMAKE_DIR};
       travis_retry wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/extra/cmake-3.17.0-1-aarch64.pkg.tar.xz;
       travis_retry wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/extra/jsoncpp-1.9.1-1-aarch64.pkg.tar.xz;
       travis_retry wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/libarchive-3.4.2-1-aarch64.pkg.tar.xz;
@@ -47,6 +48,8 @@ before_script:
       PATH=${CMAKE_DIR}/usr:${CMAKE_DIR}/usr/bin:$PATH;
       cd ${TRAVIS_BUILD_DIR};
     fi
+  - LD_LIBRARY_PATH=/home/ubuntu/deps/usr/lib:$LD_LIBRARY_PATH
+  - PATH=${CMAKE_DIR}/usr:${CMAKE_DIR}/usr/bin:$PATH
 
 install:
   - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get -y install gettext libtool-bin libogg-dev doxygen libxml2-utils w3c-sgml-lib; fi
