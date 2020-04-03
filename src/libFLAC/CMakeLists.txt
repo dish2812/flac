@@ -19,7 +19,7 @@ elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "([xX]|i[346])86")
     set(IA32 TRUE)
     add_definitions(-DFLAC__CPU_IA32 -DFLAC__ALIGN_MALLOC_DATA)
 elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "(arm | aarch64)")
-    add_definitions(-DFLAC__CPU_IA32)
+    add_definitions(-DFLAC__CPU_ARM)
 endif()
 
 include(CheckLanguage)
