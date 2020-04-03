@@ -1,12 +1,12 @@
 language: c
 
 arch:
-#  - amd64
+  - amd64
   - arm64
 
 os:
   - linux
-#  - osx
+  - osx
 
 dist: xenial
 
@@ -20,15 +20,6 @@ env:
   - BUILD_SYSTEM="autotools" CONFIGURE_OPTS=--enable-64-bit-words
   - BUILD_SYSTEM="cmake"     CONFIGURE_OPTS=
   - BUILD_SYSTEM="cmake"     CONFIGURE_OPTS=-DENABLE_64_BIT_WORDS=ON
-
-before_script:
-  - CMAKE_DIR="${TRAVIS_BUILD_DIR}/deps"
-  - mkdir ${CMAKE_DIR}
-  - cd ${CMAKE_DIR}
-  - wget --no-check-certificate https://cmake.org/files/v3.17/cmake-3.17.0.tar.gz
-  - tar -xvf cmake-3.17.0.tar.gz
-  - cd cmake-3.17.0 && ./configure --prefix=/usr && make && sudo make install
-  - cd ${TRAVIS_BUILD_DIR};
 
 install:
   - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get -y install cmake gettext libtool-bin libogg-dev doxygen libxml2-utils w3c-sgml-lib; fi
