@@ -8,7 +8,7 @@ wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/libarchi
 wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/extra/libuv-1.35.0-1-aarch64.pkg.tar.xz;
 wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/gcc-libs-9.2.0-4-aarch64.pkg.tar.xz;
 wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/extra/rhash-1.3.9-1-aarch64.pkg.tar.xz;
-wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/glibc-2.30-3-aarch64.pkg.tar.xz;
+wget --no-check-certificate http://mirror.archlinuxarm.org/arm/core/glibc-2.30-3-arm.pkg.tar.xz;
 wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/libnsl-1.2.0-2-aarch64.pkg.tar.xz;
 wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/libtirpc-1.2.5-1-aarch64.pkg.tar.xz;
 wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/openssl-1.1.1.f-1-aarch64.pkg.tar.xz;
