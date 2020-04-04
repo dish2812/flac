@@ -28,12 +28,7 @@ wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/expat-2.
 wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/lz4-1:1.9.2-2-aarch64.pkg.tar.xz;
 wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/extra/libxml2-2.9.10-1-aarch64.pkg.tar.xz;
 wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/xz-5.2.5-1-aarch64.pkg.tar.xz;
-wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/iana-etc-20200327-1-any.pkg.tar.xz
-wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/filesystem-2019.10-2-aarch64.pkg.tar.xz
-wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/linux-api-headers-5.4.17-1-any.pkg.tar.xz
-tar -xvf linux-api-headers-5.4.17-1-any.pkg.tar.xz
-tar -xvf filesystem-2019.10-2-aarch64.pkg.tar.xz
-tar -xvf iana-etc-20200327-1-any.pkg.tar.xz
+
 tar -xvf xz-5.2.5-1-aarch64.pkg.tar.xz;
 tar -xvf libxml2-2.9.10-1-aarch64.pkg.tar.xz;
 tar -xvf lz4-1:1.9.2-2-aarch64.pkg.tar.xz;
@@ -61,8 +56,19 @@ tar -xvf krb5-1.18-1-aarch64.pkg.tar.xz;
 tar -xvf zlib-1:1.2.11-4-aarch64.pkg.tar.xz;
 tar -xvf cmake-3.17.0-1-aarch64.pkg.tar.xz;
 
+rm ${CMAKE_DIR}/usr/lib/libc.a;
+rm ${CMAKE_DIR}/usr/lib/libc.so;
+rm ${CMAKE_DIR}/usr/lib/libc.so.6;
+rm ${CMAKE_DIR}/usr/lib/ld-linux-aarch64.so.1;
+rm ${CMAKE_DIR}/usr/lib/libcrypto.so.1.1;
+rm ${CMAKE_DIR}/usr/lib/libexpat.so.1;
+rm ${CMAKE_DIR}/usr/lib/libgssapi_krb5.so.2;
+rm ${CMAKE_DIR}/usr/lib/libkrb5.so.3;
+rm ${CMAKE_DIR}/usr/lib/libk5crypto.so.3;
+rm ${CMAKE_DIR}/usr/lib/libkrb5support.so.0;
 
-export LD_LIBRARY_PATH=/usr/lib:${CMAKE_DIR}/usr/lib;
+
+export LD_LIBRARY_PATH=${CMAKE_DIR}/usr/lib;
 export PATH=${CMAKE_DIR}/usr:${CMAKE_DIR}/usr/bin:$PATH;
 cd ${TRAVIS_BUILD_DIR};
 echo $LD_LIBRARY_PATH;
