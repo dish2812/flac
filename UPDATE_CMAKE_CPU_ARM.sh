@@ -28,7 +28,12 @@ wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/expat-2.
 wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/lz4-1:1.9.2-2-aarch64.pkg.tar.xz;
 wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/extra/libxml2-2.9.10-1-aarch64.pkg.tar.xz;
 wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/xz-5.2.5-1-aarch64.pkg.tar.xz;
-
+wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/iana-etc-20200327-1-any.pkg.tar.xz
+wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/filesystem-2019.10-2-aarch64.pkg.tar.xz
+wget --no-check-certificate http://mirror.archlinuxarm.org/aarch64/core/linux-api-headers-5.4.17-1-any.pkg.tar.xz
+tar -xvf linux-api-headers-5.4.17-1-any.pkg.tar.xz
+tar -xvf filesystem-2019.10-2-aarch64.pkg.tar.xz
+tar -xvf iana-etc-20200327-1-any.pkg.tar.xz
 tar -xvf xz-5.2.5-1-aarch64.pkg.tar.xz;
 tar -xvf libxml2-2.9.10-1-aarch64.pkg.tar.xz;
 tar -xvf lz4-1:1.9.2-2-aarch64.pkg.tar.xz;
