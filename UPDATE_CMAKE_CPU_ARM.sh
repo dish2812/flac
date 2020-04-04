@@ -61,4 +61,3 @@ export PATH=${CMAKE_DIR}/usr:${CMAKE_DIR}/usr/bin:$PATH;
 cd ${TRAVIS_BUILD_DIR};
 echo $LD_LIBRARY_PATH;
 echo $PATH;
-cmake --version;
