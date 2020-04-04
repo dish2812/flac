@@ -56,8 +56,8 @@ tar -xvf krb5-1.18-1-aarch64.pkg.tar.xz;
 tar -xvf zlib-1:1.2.11-4-aarch64.pkg.tar.xz;
 tar -xvf cmake-3.17.0-1-aarch64.pkg.tar.xz;
 
-rm ${CMAKE_DIR}/usr/lib/libc.a ${CMAKE_DIR}/usr/lib/libc.so ${CMAKE_DIR}/usr/lib/libc.so.6;
-export LD_LIBRARY_PATH=${CMAKE_DIR}/usr/lib;
+
+export LD_LIBRARY_PATH=/usr/lib:${CMAKE_DIR}/usr/lib;
 export PATH=${CMAKE_DIR}/usr:${CMAKE_DIR}/usr/bin:$PATH;
 cd ${TRAVIS_BUILD_DIR};
 echo $LD_LIBRARY_PATH;
