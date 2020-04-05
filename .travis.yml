@@ -8,6 +8,9 @@ os:
   - linux
   #- osx
 
+services:
+  - docker
+
 dist: xenial
 
 compiler:
@@ -21,9 +24,14 @@ env:
   - BUILD_SYSTEM="cmake"     CONFIGURE_OPTS=
   - BUILD_SYSTEM="cmake"     CONFIGURE_OPTS=-DENABLE_64_BIT_WORDS=ON
 
+before_install:
+  - if [ "${TRAVIS_CPU_ARCH}" == "arm64" ]; then 
+      docker pull carlad/sinatra
+      docker run -d -p 127.0.0.1:80:4567 carlad/sinatra /bin/sh -c "cd /root/sinatra; bundle exec foreman start;"
+      docker ps -a
+      docker run carlad/sinatra /bin/sh -c "cd /root/sinatra; bundle exec rake test"
+    fi
 
-before_script:
-  - bash UPDATE_CMAKE_CPU_ARM.sh
 
 
 install:
