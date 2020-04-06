@@ -28,5 +28,7 @@ RUN ./bootstrap -- -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_USE_OPENSSL=OFF
 RUN make
 RUN make install
 
-WORKDIR /usr/src/app
-RUN ls
+RUN useradd --user-group --system --create-home --shell /bin/bash userflac
+USER userflac
+
+WORKDIR /home/userflac
