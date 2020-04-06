@@ -42,6 +42,6 @@ script:
       sudo docker pull coreyjjames/flac.1.0;
       sudo docker run --name=flac --rm -t -d coreyjjames/flac.1.0 bash;
       sudo docker cp . flac:/usr/src/app;
-      sudo docker exec -it flac ls;
-      sudo docker exec -it flac /bin/bash -c "mkdir cmake-build && cd cmake-build && cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON $CONFIGURE_OPTS && cmake --build . && ctest -V;";
+      sudo docker exec flac ls;
+      sudo docker exec flac /bin/bash -c "mkdir cmake-build && cd cmake-build && cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON $CONFIGURE_OPTS && cmake --build . && ctest -V;";
     fi
