@@ -24,16 +24,6 @@ env:
   - BUILD_SYSTEM="cmake"     CONFIGURE_OPTS=
   - BUILD_SYSTEM="cmake"     CONFIGURE_OPTS=-DENABLE_64_BIT_WORDS=ON
 
-before_install:
-  - if [ "${TRAVIS_CPU_ARCH}" == "arm64" ]; then 
-      docker pull carlad/sinatra
-      docker run -d -p 127.0.0.1:80:4567 carlad/sinatra /bin/sh -c "cd /root/sinatra; bundle exec foreman start;"
-      docker ps -a
-      docker run carlad/sinatra /bin/sh -c "cd /root/sinatra; bundle exec rake test"
-    fi
-
-
-
 install:
   - if [ $TRAVIS_OS_NAME = linux ]; then 
       sudo apt-get -y install libcurl4-openssl-dev gettext libtool-bin libogg-dev doxygen libxml2-utils w3c-sgml-lib; 
@@ -42,10 +32,16 @@ install:
   - if [ $TRAVIS_OS_NAME = osx ]; then brew update ; brew install libogg; fi
 
 script:
-  - 
   - if [[ "${BUILD_SYSTEM}" == "autotools" ]]; then ./autogen.sh && ./configure $CONFIGURE_OPTS && make && make check; fi
-  - if [[ "${BUILD_SYSTEM}" == "cmake" ]]; then mkdir cmake-build && cd cmake-build && cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON $CONFIGURE_OPTS && cmake --build . && ctest -V; fi
+  - if [ "${BUILD_SYSTEM}" == "cmake" ] && [ "${TRAVIS_CPU_ARCH}" != "arm64" ]; then mkdir cmake-build && cd cmake-build && cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON $CONFIGURE_OPTS && cmake --build . && ctest -V; fi
   - if [ $TRAVIS_OS_NAME = linux ] && [ ${BUILD_SYSTEM} = "autotools" ]; then
       xmllint --valid --noout doc/html/*.html;
       xmllint --valid --noout doc/html/api/*.html;
     fi
+  - if [ "${TRAVIS_CPU_ARCH}" == "arm64" ] && [ ${BUILD_SYSTEM} = "cmake" ]; then 
+    docker pull coreyjjames/flac.1.0
+    sudo docker run --name=flac --rm -it -d coreyjjames/flac.1.0 bash
+    sudo docker cp . flac:/usr/src/app
+    sudo docker exec -it flac ls
+    sudo docker exec -it flac /bin/bash -c"mkdir cmake-build && cd cmake-build && cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON $CONFIGURE_OPTS && cmake --build . && ctest -V;"
+  fi

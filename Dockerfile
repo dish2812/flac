@@ -17,7 +17,6 @@ RUN apt-get update \
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential checkinstall zlib1g-dev
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install libcurl4-openssl-dev gettext libtool-bin libogg-dev doxygen libxml2-utils w3c-sgml-lib;
 
-
 WORKDIR /usr/deps
 
 RUN wget --no-check-certificate https://cmake.org/files/v3.17/cmake-3.17.0.tar.gz
@@ -29,10 +28,5 @@ RUN ./bootstrap -- -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_USE_OPENSSL=OFF
 RUN make
 RUN make install
 
-
 WORKDIR /usr/src/app
-
-COPY . .
 RUN ls
-
-# RUN mkdir cmake-build && cd cmake-build && cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON && cmake --build . && ctest -V
