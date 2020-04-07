@@ -54,6 +54,7 @@ check_include_file("byteswap.h" HAVE_BYTESWAP_H)
 check_include_file("inttypes.h" HAVE_INTTYPES_H)
 check_include_file("stdint.h" HAVE_STDINT_H)
 check_include_file("x86intrin.h" FLAC__HAS_X86INTRIN)
+check_include_file("arm_neon.h" FLAC__HAS_NEONINTRIN)
 
 check_function_exists(fseeko HAVE_FSEEKO)
 

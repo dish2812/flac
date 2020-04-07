@@ -279,8 +279,8 @@ void FLAC__cpu_info (FLAC__CPUInfo *info)
 	info->type = FLAC__CPUINFO_TYPE_X86_64;
 #elif defined FLAC__CPU_PPC
 	info->type = FLAC__CPUINFO_TYPE_PPC;
-#elif defined FLAC__CPU_AARCH64
-	info->type = FLAC__CPUINFO_TYPE_AARCH64;
+#elif defined FLAC__CPU_ARM
+	info->type = FLAC__CPUINFO_TYPE_ARM;
 #else
 	info->type = FLAC__CPUINFO_TYPE_UNKNOWN;
 #endif
@@ -293,7 +293,7 @@ void FLAC__cpu_info (FLAC__CPUInfo *info)
 	case FLAC__CPUINFO_TYPE_PPC:
 		ppc_cpu_info (info);
 		break;
-	case FLAC__CPUINFO_TYPE_AARCH64: /* fallthrough */
+	case FLAC__CPUINFO_TYPE_ARM: /* fallthrough */
 	default:
 		info->use_asm = false;
 		break;
