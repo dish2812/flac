@@ -32,7 +32,7 @@ install:
   - if [ $TRAVIS_OS_NAME = osx ]; then brew update ; brew install libogg; fi
 
 script:
-  - if [[ "${BUILD_SYSTEM}" == "autotools" ]]; then ./autogen.sh && ./configure $CONFIGURE_OPTS && make && make check; fi
+  - if [ "${BUILD_SYSTEM}" == "autotools" ] && [ ${TRAVIS_CPU_ARCH} != "arm64" ]; then ./autogen.sh && ./configure $CONFIGURE_OPTS && make && make check; fi
   - if [ ${BUILD_SYSTEM} == "cmake" ] && [ ${TRAVIS_CPU_ARCH} != "arm64" ]; then mkdir cmake-build && cd cmake-build && cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON $CONFIGURE_OPTS && cmake --build . && ctest -V; fi
   - if [ $TRAVIS_OS_NAME = linux ] && [ ${BUILD_SYSTEM} = "autotools" ]; then
       xmllint --valid --noout doc/html/*.html;
@@ -45,4 +45,12 @@ script:
       sudo docker exec flac ls;
       sudo docker exec -u root flac chown -R userflac /home/userflac;
       sudo docker exec flac /bin/bash -c "mkdir cmake-build && cd cmake-build && cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON $CONFIGURE_OPTS && cmake --build . && ctest -V;";
+    fi
+  - if [ ${TRAVIS_CPU_ARCH} == "arm64" ] && [ ${BUILD_SYSTEM} = "autotools" ]; then 
+      sudo docker pull coreyjjames/flac.1.1;
+      sudo docker run --name=flac --rm -t -d coreyjjames/flac.1.1 bash;
+      sudo docker cp . flac:/home/userflac;
+      sudo docker exec flac ls;
+      sudo docker exec -u root flac chown -R userflac /home/userflac;
+      sudo docker exec flac /bin/bash -c "./autogen.sh && ./configure $CONFIGURE_OPTS && make && make check";
     fi

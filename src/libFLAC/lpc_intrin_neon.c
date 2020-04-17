@@ -78,7 +78,7 @@ void FLAC__lpc_compute_autocorrelation_intrin_neon_lag_4(const FLAC__real data[]
         if (limit < 0)
             limit = 0;
 
-        for (; i < (long)data_len; i++)
+        for(i = data_len-1; i >= limit; i--)
         {
             float32x4_t d = vld1q_lane_f32(data + i, vdupq_n_f32(0.0f), 0);
 
@@ -120,7 +120,7 @@ void FLAC__lpc_compute_autocorrelation_intrin_neon_lag_8(const FLAC__real data[]
         if (limit < 0)
             limit = 0;
 
-        for (; i < (long)data_len; i++)
+        for(i = data_len-1; i >= limit; i--)
         {
             float32x4_t d = vld1q_lane_f32(data + i, vdupq_n_f32(0.0f), 0);
             d = shufffleVector(d);
@@ -171,7 +171,7 @@ void FLAC__lpc_compute_autocorrelation_intrin_neon_lag_12(const FLAC__real data[
         if (limit < 0)
             limit = 0;
 
-        for (; i < (long)data_len; i++)
+        for(i = data_len-1; i >= limit; i--)
         {
             float32x4_t d = vld1q_lane_f32(data + i, vdupq_n_f32(0.0f), 0);
             d = shufffleVector(d);
@@ -230,7 +230,7 @@ void FLAC__lpc_compute_autocorrelation_intrin_neon_lag_16(const FLAC__real data[
         if (limit < 0)
             limit = 0;
 
-        for (; i < (long)data_len; i++)
+        for(i = data_len-1; i >= limit; i--)
         {
             float32x4_t d = vld1q_lane_f32(data + i, vdupq_n_f32(0.0f), 0);
             d = shufffleVector(d);
